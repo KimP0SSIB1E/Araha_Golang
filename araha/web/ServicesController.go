@@ -11,6 +11,10 @@ import (
 func CreateSubscriptionController() gin.HandlerFunc {
 	var createSubscription services.NewSubscriptionServices
 
+	//if http.MethodPost {
+	//
+	//}
+
 	return func(c *gin.Context) {
 		var Subscription models.Subscription
 

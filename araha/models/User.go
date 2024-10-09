@@ -6,4 +6,5 @@ type User struct {
 	Email     string `json:"Email"`
 	Password  string `json:"Password"`
 	UserToken string `json:"UserToken"`
+	Balance   float64
 }

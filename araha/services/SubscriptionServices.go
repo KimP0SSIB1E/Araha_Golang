@@ -25,13 +25,15 @@ func (nss *NewSubscriptionServices) CreateSubscription(subscription models.Subsc
 	if foundSubType.SubscriptionType == subscription.SubscriptionType {
 		return http.StatusConflict, nil
 	}
+	//var userBalance models.User
+	// userBalance.Balance > 0
 
 	if subscription.SubscriptionType != " " {
 		subscription = mapper.FindSubscriptionTypes(subscription)
 		db, err := repository.SubscriptionRepo()
 		db.Save(subscription)
 		if err != nil {
-			log.Fatalf("Could not save to the database: %v", err)
+			return http.StatusInternalServerError, err
 		}
 		return http.StatusCreated, nil
 	}
